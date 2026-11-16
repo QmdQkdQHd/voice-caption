@@ -1,0 +1,14 @@
+.venv/
+.venv-*/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+release/
+.env*
+!.env.example
+models/
+recordings/
+settings.json
+.DS_Store
