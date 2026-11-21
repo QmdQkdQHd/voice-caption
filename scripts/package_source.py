@@ -11,8 +11,9 @@ def package(root=ROOT):
     version = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))["project"]["version"]
     paths = [root / name for name in ("pyproject.toml", "README.md", "read.md", ".gitignore",
              "install-windows.cmd", "start-windows.cmd", "build-windows.cmd")]
-    allowed = {"voice_caption": {".py"}, "tests": {".py"}, "scripts": {".py"},
-               "packaging": {".py", ".spec"}, "docs": {".md", ".png", ".html"}}
+    allowed = {"voice_caption": {".py"}, "tests": {".py"}, "scripts": {".py", ".ps1"},
+               "packaging": {".py", ".spec", ".txt"}, "docs": {".md", ".png", ".html"}}
+    allowed[".github/workflows"] = {".yml", ".yaml"}
     for directory, extensions in allowed.items():
         paths.extend(p for p in (root / directory).rglob("*") if p.is_file()
                      and p.suffix in extensions and "__pycache__" not in p.parts)
